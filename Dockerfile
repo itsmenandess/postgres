@@ -66,7 +66,7 @@ VOLUME /var/lib/postgresql/data
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
 RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.4/main/pg_hba.conf
-/
+
 # And add ``listen_addresses`` to ``/etc/postgresql/9.4/main/postgresql.conf`` 
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 
