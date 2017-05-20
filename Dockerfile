@@ -24,7 +24,9 @@ RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* 
 ENV LANG en_US.utf8
 
 RUN mkdir /docker-entrypoint-initdb.d
+
 ADD init.sql /docker-entrypoint-initdb.d/
+
 RUN set -ex; \
 # pub   4096R/ACCC4CF8 2011-10-13 [expires: 2019-07-02]
 #       Key fingerprint = B97B 0AFC AA1A 47F0 44F2  44A0 7FCC 7D46 ACCC 4CF8
@@ -65,7 +67,7 @@ VOLUME /var/lib/postgresql/data
 # database are possible.
 RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/data/pg_hba.conf
 
-# And add ``listen_addresses`` to ``/var/lib/pgsql/9.4/data/postgresql.conf``
+# And add ``listen_addresses`` to ``/var/lib/pgsql/9.4/data/postgresql.conf`` 
 RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 
 COPY docker-entrypoint.sh /usr/local/bin/
