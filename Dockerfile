@@ -65,10 +65,10 @@ VOLUME /var/lib/postgresql/data
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
-RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/data/pg_hba.conf
-
-# And add ``listen_addresses`` to ``/var/lib/pgsql/9.4/data/postgresql.conf`` 
-RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
+RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.4/main/pg_hba.conf
+/
+# And add ``listen_addresses`` to ``/etc/postgresql/9.4/main/postgresql.conf`` 
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
